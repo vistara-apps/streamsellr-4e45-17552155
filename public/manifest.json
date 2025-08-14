@@ -1,0 +1,14 @@
+{
+  "name": "StreamSellr",
+  "description": "StreamSellr is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://4e45bfdd-3595-4831-80ec-0f5c1f0ac4fb.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "StreamSellr",
+      "description": "StreamSellr is a Base Mini App built with Zara.",
+      "url": "https://4e45bfdd-3595-4831-80ec-0f5c1f0ac4fb.vistara.dev",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

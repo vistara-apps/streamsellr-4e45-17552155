@@ -163,7 +163,7 @@ export default function App() {
                   {product.isTokenGated && (
                     <TokenGatedPrompt 
                       variant="notOwned"
-                      requiredToken={product.requiredToken}
+                      requiredToken={product.requiredToken || "Creator Token"}
                     />
                   )}
                 </div>

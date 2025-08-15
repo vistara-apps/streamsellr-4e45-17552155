@@ -29,7 +29,7 @@ export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
   const [activeView, setActiveView] = useState("products");
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
@@ -151,7 +151,7 @@ export default function App() {
                   {product.isTokenGated && (
                     <TokenGatedPrompt 
                       variant="notOwned"
-                      requiredToken={product.requiredToken}
+                      requiredToken={product.requiredToken || "Access Token"}
                     />
                   )}
                 </div>

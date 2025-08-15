@@ -28,6 +28,14 @@ export function LiveProductShowcase({
 }: LiveProductShowcaseProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  const handlePurchase = (cardProduct: any) => {
+    // Find the original product from the products array
+    const originalProduct = products.find(p => p.product_id === cardProduct.product_id);
+    if (originalProduct) {
+      onPurchase(originalProduct);
+    }
+  };
+
   return (
     <div className="space-y-lg">
       <div className="flex items-center justify-between">
@@ -46,6 +54,8 @@ export function LiveProductShowcase({
               <ProductCard
                 product={{
                   id: parseInt(product.product_id),
+                  product_id: product.product_id,
+                  creator_id: product.creator_id,
                   name: product.name,
                   description: product.description,
                   price: product.price_usdc,
@@ -53,7 +63,7 @@ export function LiveProductShowcase({
                   isTokenGated: isGated
                 }}
                 variant="compact"
-                onPurchase={onPurchase}
+                onPurchase={handlePurchase}
                 isTokenGated={isGated}
               />
               {isGated && (

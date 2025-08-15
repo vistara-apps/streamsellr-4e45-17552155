@@ -3,6 +3,7 @@
 interface Product {
   id?: number;
   product_id?: string;
+  creator_id?: string;
   name: string;
   description: string;
   price?: number;

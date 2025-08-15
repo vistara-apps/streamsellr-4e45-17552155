@@ -29,7 +29,19 @@ export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
   const [activeView, setActiveView] = useState("products");
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  
+  // Define the type for the product to match the mockProducts structure
+  type ProductType = {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    isTokenGated: boolean;
+    requiredToken?: string;
+  };
+  
+  const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
 
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
@@ -151,7 +163,7 @@ export default function App() {
                   {product.isTokenGated && (
                     <TokenGatedPrompt 
                       variant="notOwned"
-                      requiredToken={product.requiredToken}
+                      requiredToken={product.requiredToken || "Creator Token"}
                     />
                   )}
                 </div>

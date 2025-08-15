@@ -15,6 +15,19 @@ interface Product {
   sku?: string;
 }
 
+// Define a separate interface for the ProductCard component's product type
+interface ProductCardType {
+  id?: number;
+  product_id?: string;
+  name: string;
+  description: string;
+  price?: number;
+  price_usdc?: number;
+  image?: string;
+  image_url?: string;
+  isTokenGated?: boolean;
+}
+
 interface LiveProductShowcaseProps {
   products: Product[];
   onPurchase: (product: Product) => void;
@@ -53,7 +66,16 @@ export function LiveProductShowcase({
                   isTokenGated: isGated
                 }}
                 variant="compact"
-                onPurchase={onPurchase}
+                onPurchase={(cardProduct: ProductCardType) => {
+                  // Map back from ProductCard's product type to our Product type
+                  const originalProduct = products.find(p => 
+                    p.product_id === cardProduct.product_id || 
+                    p.product_id === cardProduct.id?.toString()
+                  );
+                  if (originalProduct) {
+                    onPurchase(originalProduct);
+                  }
+                }}
                 isTokenGated={isGated}
               />
               {isGated && (
